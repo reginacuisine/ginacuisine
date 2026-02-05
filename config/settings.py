@@ -9,7 +9,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # On utilise la variable d'environnement de Render, sinon une clé locale
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-)hw8$@c83cr&7#tthd*ke!^kf^f03urxp5_u=cqtajhmxuj45a')
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['ginacuisine.onrender.com', 'localhost', '127.0.0.1']
 
