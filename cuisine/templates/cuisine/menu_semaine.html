@@ -1,0 +1,43 @@
+{% extends 'cuisine/base.html' %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-6 py-12">
+    <div class="text-center mb-16">
+        <h3 class="text-amber-600 font-bold uppercase tracking-widest text-sm">{{ nom_jour }}</h3>
+        <h1 class="font-serif italic text-5xl mt-2 text-gray-800">{{ date_du_jour }}</h1>
+        <div class="w-24 h-1 bg-amber-600 mx-auto mt-6"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        {% for recette in recettes %}
+            {% if recette.image %} <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col border border-gray-100 hover:shadow-2xl transition-shadow duration-300">
+                    
+                    <div class="h-64 overflow-hidden">
+                        <img src="{{ recette.image.url }}" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                    </div>
+
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h2 class="font-serif text-2xl font-bold text-gray-800 mb-2">{{ recette.titre }}</h2>
+                        
+                        <div class="flex justify-between items-center mb-4 text-sm font-bold">
+                            <span class="text-amber-600 text-lg">{{ recette.prix }} FCFA</span>
+                            <span class="text-gray-400">⏱ {{ recette.temps_cuisson }} min</span>
+                        </div>
+
+                        <p class="text-gray-600 text-sm italic line-clamp-3 mb-6 flex-grow">
+                            {{ recette.ingredients }}
+                        </p>
+
+                        <a href="mailto:ton_email@exemple.com?subject=Commande: {{ recette.titre }}&body=Bonjour, je souhaite commander le plat : {{ recette.titre }}." 
+                           class="block w-full bg-black text-white text-center py-3 rounded uppercase tracking-widest font-bold text-[10px] hover:bg-amber-700 transition-colors">
+                            Lancer votre commande
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+        {% empty %}
+            <p class="col-span-full text-center text-gray-400 italic py-10">Rien au menu pour ce jour.</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

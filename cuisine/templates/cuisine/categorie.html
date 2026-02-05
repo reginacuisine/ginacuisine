@@ -1,0 +1,52 @@
+{% extends 'cuisine/base.html' %}
+
+{% block content %}
+    <div class="max-w-7xl mx-auto py-20 px-6">
+        <h2 class="text-center font-serif-elegant italic text-4xl mb-12">
+            Nos {{ nom_categorie }}s
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {% for recette in recettes %} 
+            
+            <div class="recipe-card">
+                {% if recette.image %}
+                    <img src="{{ recette.image.url }}" class="w-full h-[400px] object-cover mb-4">
+                {% else %}
+                    <img src="https://via.placeholder.com/400x400?text=Pas+d'image" class="w-full h-[400px] object-cover mb-4">
+                {% endif %}
+                
+                <p class="text-[11px] uppercase tracking-widest text-amber-600 mb-2">
+                    {{ nom_categorie }}
+                </p>
+                <h4 class="font-serif-elegant italic text-2xl text-gray-800 mb-4">
+                    {{ recette.titre }}
+                </h4>
+
+                <div class="mb-6">
+                    <p class="font-sans-clean font-bold text-xl uppercase tracking-[0.1em] text-gray-900 mb-2">
+                        Ingrédients
+                    </p>
+                    <div class="text-sm text-gray-600 leading-relaxed italic">
+                        {{ recette.ingredients|linebreaks }}
+                    </div>
+                </div>
+
+                <div>
+                    <p class="font-sans-clean font-bold text-xl uppercase tracking-[0.1em] text-gray-900 mb-2">
+                        Préparation
+                    </p>
+                    <div class="text-sm text-gray-700 leading-relaxed">
+                        {{ recette.instructions|linebreaks }}
+                    </div>
+                </div>
+            </div>
+
+            {% empty %}
+            <div class="col-span-3 text-center py-10">
+                <p class="text-gray-400 font-sans-clean italic">Aucune recette pour le moment dans cette catégorie.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

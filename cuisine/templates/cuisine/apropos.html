@@ -1,0 +1,39 @@
+{% extends 'cuisine/base.html' %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto px-6 py-16">
+    <div class="flex flex-col md:flex-row items-center gap-12 mb-16">
+        <div class="w-64 h-64 flex-shrink-0">
+            {% if apropos.image %}
+                <img src="{{ apropos.image.url }}" alt="{{ apropos.titre }}" class="w-full h-full object-cover rounded-full shadow-2xl border-4 border-amber-100">
+            {% else %}
+                <div class="w-full h-full bg-gray-200 rounded-full flex items-center justify-center text-gray-400 italic">Photo ici</div>
+            {% endif %}
+        </div>
+        
+        <div class="text-center md:text-left">
+            <h1 class="font-serif italic text-5xl text-gray-800 mb-4">{{ apropos.titre }}</h1>
+            <div class="h-1 w-20 bg-amber-600 mx-auto md:mx-0"></div>
+        </div>
+    </div>
+
+    {% if apropos.citation %}
+    <div class="bg-[#fdf6f0] p-8 mb-12 rounded-sm border-l-4 border-amber-600 italic shadow-sm">
+        <p class="text-2xl font-serif text-gray-700 leading-relaxed">
+            " {{ apropos.citation }} "
+        </p>
+    </div>
+    {% endif %}
+
+    <div class="prose prose-lg max-w-none text-gray-600 leading-relaxed space-y-6">
+        {{ apropos.description|linebreaks }}
+    </div>
+
+    <div class="mt-16 pt-8 border-t border-gray-100 text-center">
+        <p class="text-sm uppercase tracking-widest text-gray-400 mb-4">Envie de collaborer ou de discuter cuisine ?</p>
+        <a href="{% url 'contact' %}" class="inline-block bg-gray-900 text-white px-8 py-3 rounded-sm hover:bg-amber-600 transition-colors">
+            Contactez-moi
+        </a>
+    </div>
+</div>
+{% endblock %}
