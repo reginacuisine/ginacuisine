@@ -1,13 +1,16 @@
 {% extends 'cuisine/base.html' %}
-
-{% block content %}
+{% load static %} {% block content %}
 <div class="max-w-4xl mx-auto px-6 py-16">
     <div class="flex flex-col md:flex-row items-center gap-12 mb-16">
         <div class="w-64 h-64 flex-shrink-0">
-            {% if apropos.image %}
-                <img src="{{ apropos.image.url }}" alt="{{ apropos.titre }}" class="w-full h-full object-cover rounded-full shadow-2xl border-4 border-amber-100">
+            {% if apropos.image_statique %}
+                <img src="{% static apropos.image_statique %}" 
+                     alt="{{ apropos.titre }}" 
+                     class="w-full h-full object-cover rounded-full shadow-2xl border-4 border-amber-100">
             {% else %}
-                <div class="w-full h-full bg-gray-200 rounded-full flex items-center justify-center text-gray-400 italic">Photo ici</div>
+                <div class="w-full h-full bg-gray-200 rounded-full flex items-center justify-center text-gray-400 italic">
+                    Photo ici
+                </div>
             {% endif %}
         </div>
         

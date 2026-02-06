@@ -2,23 +2,34 @@
 
 {% block content %}
     <section class="relative h-[60vh] w-full overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=2070" class="w-full h-full object-cover">
+        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&q=80&w=2070" 
+             class="w-full h-full object-cover" 
+             alt="Bannière Gina Cuisine">
         <div class="absolute inset-0 bg-black/10 flex items-center justify-center">
-            <h1 class="text-white text-5xl md:text-7xl italic drop-shadow-lg">Construire avec élégance...</h1>
+            <h1 class="text-white text-5xl md:text-7xl italic drop-shadow-lg font-serif">Construire avec élégance...</h1>
         </div>
     </section>
 
     <div class="max-w-7xl mx-auto py-10 px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
     {% for recette in recettes %}
-        {% if recette.image %} 
+        {% if recette.image_statique %} 
             <div class="recipe-card group"> 
-                <img src="{{ recette.image.url }}" class="w-full h-[400px] object-cover mb-4 shadow-sm group-hover:shadow-md transition-shadow">
+                {% load static %}
+                <img src="{% static recette.image_statique %}" 
+                     alt="{{ recette.titre }}" 
+                     class="w-full h-[400px] object-cover mb-4 shadow-sm group-hover:shadow-md transition-shadow">
                 
                 <h2 class="recipe-title font-serif italic text-2xl text-gray-800">{{ recette.titre }}</h2>
                 
-                <p class="text-sm text-gray-500 mt-1 italic">{{ recette.description|truncatewords:10 }}</p>
+                <p class="text-sm text-gray-500 mt-1 italic">
+                    {{ recette.ingredients|truncatewords:10 }}
+                </p>
             </div>
         {% endif %}
+    {% empty %}
+        <div class="col-span-3 text-center py-20">
+            <p class="text-gray-400 italic">Aucune recette n'est encore enregistrée dans l'administration.</p>
+        </div>
     {% endfor %}
-</div>
+    </div>
 {% endblock %}

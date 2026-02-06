@@ -10,10 +10,14 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         {% for recette in recettes %}
-            {% if recette.image %} <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col border border-gray-100 hover:shadow-2xl transition-shadow duration-300">
+            {% if recette.image_statique %} 
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col border border-gray-100 hover:shadow-2xl transition-shadow duration-300">
                     
                     <div class="h-64 overflow-hidden">
-                        <img src="{{ recette.image.url }}" class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
+                        {% load static %}
+                        <img src="{% static recette.image_statique %}" 
+                             alt="{{ recette.titre }}" 
+                             class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500">
                     </div>
 
                     <div class="p-6 flex-grow flex flex-col">

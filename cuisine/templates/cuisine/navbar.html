@@ -1,21 +1,26 @@
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#">RECETTES</a>
-    <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="{% url 'categorie' 'salade' %}">Salade</a></li>
-        <li><a class="dropdown-item" href="{% url 'categorie' 'plat_burkinabe' %}">Plat Burkinabé</a></li>
-        <li><a class="dropdown-item" href="{% url 'categorie' 'plat_international' %}">Plat International</a></li>
-        <li><a class="dropdown-item" href="{% url 'categorie' 'dessert' %}">Dessert</a></li>
-        <li><a class="dropdown-item" href="{% url 'categorie' 'boisson' %}">Boisson | Cocktail</a></li>
-        <li><a class="dropdown-item" href="{% url 'categorie' 'petit_dejeuner' %}">Petit-déjeuner</a></li>
-    </ul>
-</li>
+<div class="relative group">
+    <button class="text-[13px] uppercase tracking-widest font-bold text-gray-800 flex items-center outline-none">
+        Recettes
+    </button>
+    <div class="absolute left-0 top-full w-64 bg-white shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100 z-[100]">
+        <ul class="flex flex-col text-[12px] text-gray-600 uppercase tracking-widest">
+            <li><a href="{% url 'categorie' 'salade' %}" class="block px-6 py-3 hover:bg-gray-50 border-b">Salade</a></li>
+            <li><a href="{% url 'categorie' 'plat_burkinabe' %}" class="block px-6 py-3 hover:bg-gray-50 border-b">Plat Burkinabé</a></li>
+            <li><a href="{% url 'categorie' 'plat_international' %}" class="block px-6 py-3 hover:bg-gray-50 border-b">Plat International</a></li>
+            <li><a href="{% url 'categorie' 'dessert' %}" class="block px-6 py-3 hover:bg-gray-50 border-b">Dessert</a></li>
+            <li><a href="{% url 'categorie' 'boisson' %}" class="block px-6 py-3 hover:bg-gray-50 border-b">Boisson | Cocktail</a></li>
+            <li><a href="{% url 'categorie' 'petit_dejeuner' %}" class="block px-6 py-3 hover:bg-gray-50">Petit-déjeuner</a></li>
+        </ul>
+    </div>
+</div>
 
 <div class="relative group">
-    <a href="#" class="text-[13px] uppercase tracking-widest font-bold text-gray-800">Utile</a>
-    <div class="absolute left-0 top-full w-72 bg-white shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all border border-gray-100 z-50">
-        <ul class="flex flex-col text-[11px] uppercase tracking-widest">
+    <button class="text-[13px] uppercase tracking-widest font-bold text-gray-800 flex items-center outline-none">
+        Utile
+    </button>
+    <div class="absolute left-0 top-full w-72 bg-white shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100 z-[100]">
+        <ul class="flex flex-col text-[12px] text-gray-600 uppercase tracking-widest">
             <li><a href="{% url 'utile_cat' 'calendrier' %}" class="block px-6 py-4 hover:bg-gray-50 border-b">Calendrier des fruits & légumes</a></li>
-            
             <li><a href="{% url 'utile_cat' 'materiel' %}" class="block px-6 py-4 hover:bg-gray-50 border-b">Mon matériel de cuisine</a></li>
             <li><a href="{% url 'utile_cat' 'sante' %}" class="block px-6 py-4 hover:bg-gray-50">Rééquilibrage alimentaire</a></li>
         </ul>

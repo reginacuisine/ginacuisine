@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <meta charset="UTF-8">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
 </head>
@@ -22,12 +23,9 @@
     </nav>
 
     <div class="text-center py-8 bg-white">
-        <h1 class="font-serif italic text-[50px] text-gray-700 tracking-tight">
-            Mon Blog Cuisine
-        </h1>
+        <h1 class="font-serif italic text-[50px] text-gray-700 tracking-tight">Mon Blog Cuisine</h1>
     </div>
 
-    
     <nav class="bg-white border-y border-gray-50 relative">
         <div class="flex justify-center items-center space-x-10 py-5">
             <a href="{% url 'home' %}" class="text-[13px] uppercase tracking-[0.25em] text-gray-500 hover:text-black">Accueil</a>
@@ -47,25 +45,25 @@
                 </div>
             </div>
 
-            
-            <a href="{% url 'menu_semaine' %}" class="text-[13px] uppercase tracking-[0.25em] text-gray-500 hover:text-black">
-    Menus de la semaine
-</a>
+            <a href="{% url 'menu_semaine' %}" class="text-[13px] uppercase tracking-[0.25em] text-gray-500 hover:text-black">Menus de la semaine</a>
+
             <div class="relative group">
-    <a href="#" class="text-[13px] uppercase tracking-[0.25em] text-gray-800 font-bold">Utile</a>
-    <div class="absolute left-0 top-full w-72 bg-white border border-gray-100 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-[100]">
-        <ul class="flex flex-col text-[12px] text-gray-600 uppercase tracking-widest">
-            <li><a href="{% url 'utile_cat' 'calendrier' %}" class="block px-6 py-4 hover:bg-gray-50 border-b">Calendrier des fruits & Légumes de saison</a></li>
-            <li><a href="{% url 'utile_cat' 'materiel' %}" class="block px-6 py-4 hover:bg-gray-50 border-b">Mon matériel de cuisine</a></li>
-        </ul>
-    </div>
-</div>
+                <a href="#" class="text-[13px] uppercase tracking-[0.25em] text-gray-800 font-bold">Utile</a>
+                <div class="absolute left-0 top-full w-72 bg-white border border-gray-100 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-[100]">
+                    <ul class="flex flex-col text-[12px] text-gray-600 uppercase tracking-widest">
+                        <li><a href="{% url 'utile_cat' 'calendrier' %}" class="block px-6 py-4 hover:bg-gray-50 border-b">Calendrier des fruits & Légumes de saison</a></li>
+                        <li><a href="{% url 'utile_cat' 'materiel' %}" class="block px-6 py-4 hover:bg-gray-50 border-b">Mon matériel de cuisine</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </nav>
 
     <div class="flex flex-col md:flex-row min-h-screen">
         <div class="md:w-1/2 relative h-64 md:h-auto">
-            <img src="{% static 'cuisine/image.jpg' %}" alt="Mon Portrait" class="absolute inset-0 w-full h-full object-cover">
+             <img src="{% static 'cuisine/contact_portrait.jpg' %}" 
+                  alt="Mon Portrait" 
+                  class="absolute inset-0 w-full h-full object-cover">
         </div>
 
         <div class="md:w-1/2 p-12 md:p-24 flex flex-col justify-center">
@@ -75,111 +73,50 @@
                 Laissez-moi un message et je vous répondrai au plus vite...
             </p>
             
-   <form action="https://formspree.io/f/xzdapgqp" method="POST" class="space-y-6">
-    <div>
-        <label class="block text-[11px] uppercase tracking-widest text-gray-400 mb-2">Votre Nom Complet</label>
-        <input type="text" name="name" required placeholder="Ex: Jean Dupont"
-               class="w-full border-b border-gray-200 py-3 focus:border-amber-500 outline-none transition-colors text-gray-700 italic bg-transparent">
+            <form action="https://formspree.io/f/xzdapgqp" method="POST" class="space-y-6">
+                <div>
+                    <label class="block text-[11px] uppercase tracking-widest text-gray-400 mb-2">Votre Nom Complet</label>
+                    <input type="text" name="name" required placeholder="Ex: Jean Dupont" class="w-full border-b border-gray-200 py-3 focus:border-amber-500 outline-none transition-colors text-gray-700 italic bg-transparent">
+                </div>
+                <div>
+                    <label class="block text-[11px] uppercase tracking-widest text-gray-400 mb-2">Votre Adresse Email</label>
+                    <input type="email" name="email" required placeholder="exemple@mail.com" class="w-full border-b border-gray-200 py-3 focus:border-amber-500 outline-none transition-colors text-gray-700 italic bg-transparent">
+                </div>
+                <div>
+                    <label class="block text-[11px] uppercase tracking-widest text-gray-400 mb-2">Votre Message</label>
+                    <textarea name="message" rows="4" required placeholder="Comment puis-je vous aider ?" class="w-full border-b border-gray-200 py-3 focus:border-amber-500 outline-none transition-colors text-gray-700 italic bg-transparent"></textarea>
+                </div>
+                <button type="submit" class="mt-8 bg-gray-800 text-white text-[12px] uppercase tracking-[0.2em] px-10 py-4 hover:bg-amber-600 transition-all duration-300 rounded-sm shadow-sm">
+                    Envoyer le message
+                </button>
+            </form>
+        </div>
     </div>
 
-    <div>
-        <label class="block text-[11px] uppercase tracking-widest text-gray-400 mb-2">Votre Adresse Email</label>
-        <input type="email" name="email" required placeholder="exemple@mail.com"
-               class="w-full border-b border-gray-200 py-3 focus:border-amber-500 outline-none transition-colors text-gray-700 italic bg-transparent">
-    </div>
-
-    <div>
-        <label class="block text-[11px] uppercase tracking-widest text-gray-400 mb-2">Votre Message</label>
-        <textarea name="message" rows="4" required placeholder="Comment puis-je vous aider ?"
-                  class="w-full border-b border-gray-200 py-3 focus:border-amber-500 outline-none transition-colors text-gray-700 italic bg-transparent"></textarea>
-    </div>
-
-    <button type="submit" 
-            class="mt-8 bg-gray-800 text-white text-[12px] uppercase tracking-[0.2em] px-10 py-4 hover:bg-amber-600 transition-all duration-300 rounded-sm shadow-sm">
-        Envoyer le message
-    </button>
-</form>
-
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
-<footer class="bg-[#1f2128] text-white pt-16 pb-8 mt-20">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
-            
-                  
-          {% load static %} <div>
-    <h3 class="font-serif text-xl mb-4 text-amber-500">Localisation</h3>
-    
-    <div class="mb-4 overflow-hidden rounded-md border-2 border-amber-500 w-full h-48">
-        <img src="{% static 'cuisine/localisation.jpg' %}" 
-             alt="Localisation Chez Regina" 
-             class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500">
-    </div>
-
-    <p class="text-sm text-gray-200 italic">
-        <i class="fa-solid fa-location-dot mr-2 text-amber-500"></i> Basée à Ouagadougou, Burkina Faso 🇧🇫
-    </p>
-</div>
-
-            <div>
-                <h3 class="font-serif text-xl mb-6 text-amber-500">Regina</h3>
-                <ul class="space-y-3 text-sm text-gray-200"> <li>
-                        <a href="{% url 'apropos' %}" class="hover:text-amber-500 transition-colors flex items-center">
-                            <i class="fa-solid fa-chevron-right text-[10px] mr-2 text-amber-500/50"></i> À Propos de moi
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'contact' %}" class="hover:text-amber-500 transition-colors flex items-center">
-                            <i class="fa-solid fa-chevron-right text-[10px] mr-2 text-amber-500/50"></i> Me contacter
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'utile_cat' 'calendrier' %}" class="hover:text-amber-500 transition-colors flex items-center">
-                            <i class="fa-solid fa-chevron-right text-[10px] mr-2 text-amber-500/50"></i> Calendrier de saison
-                            <a href="{% url 'utile_cat' 'sante' %}" class="hover:text-amber-500 transition-colors flex items-center">
-                            <i class="fa-solid fa-chevron-right text-[10px] mr-2 text-amber-500/50"></i> Rééquilibrage alimentaire
-                            <a href="{% url 'utile_cat' 'materiel' %}" class="hover:text-amber-500 transition-colors flex items-center">
-                            <i class="fa-solid fa-chevron-right text-[10px] mr-2 text-amber-500/50"></i> Mon matériel de cuisine
-                        </a>
-                        </a>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div>
-                <h3 class="font-serif text-xl mb-6 text-amber-500">Rechercher une recette</h3>
-                <div class="relative">
-                    <input type="text" id="recipe-search-input" placeholder="Tapez le nom d'un plat..." 
-                           class="w-full bg-transparent border-b border-gray-600 py-2 focus:border-amber-500 outline-none text-sm italic text-white">
-                    <i class="fa-solid fa-utensils absolute right-0 top-3 text-amber-500/50"></i>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <footer class="bg-[#1f2128] text-white pt-16 pb-8 mt-20">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+                <div>
+                    <h3 class="font-serif text-xl mb-4 text-amber-500">Localisation</h3>
+                    <div class="mb-4 overflow-hidden rounded-md border-2 border-amber-500 w-full h-48">
+                        <img src="{% static 'cuisine/localisation.jpg' %}" alt="Localisation" class="w-full h-full object-cover grayscale">
+                    </div>
+                    <p class="text-sm text-gray-200 italic"><i class="fa-solid fa-location-dot mr-2 text-amber-500"></i> Ouagadougou, Burkina Faso 🇧🇫</p>
+                </div>
+                <div>
+                    <h3 class="font-serif text-xl mb-6 text-amber-500">Regina</h3>
+                    <ul class="space-y-3 text-sm text-gray-200">
+                        <li><a href="{% url 'apropos' %}" class="hover:text-amber-500"><i class="fa-solid fa-chevron-right text-[10px] mr-2"></i> À Propos de moi</a></li>
+                        <li><a href="{% url 'contact' %}" class="hover:text-amber-500"><i class="fa-solid fa-chevron-right text-[10px] mr-2"></i> Me contacter</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-serif text-xl mb-6 text-amber-500">Rechercher</h3>
+                    <input type="text" id="recipe-search-input" placeholder="Chercher un plat..." class="w-full bg-transparent border-b border-gray-600 py-2 outline-none text-white italic">
                 </div>
             </div>
         </div>
-        </div>
-</footer>
-
-<script>
-document.getElementById('recipe-search-input').addEventListener('input', function() {
-    let filter = this.value.toLowerCase().trim();
-    let cards = document.querySelectorAll('.recipe-card'); // Il cherche les blocs de plats
-
-    cards.forEach(card => {
-        let title = card.querySelector('.recipe-title').innerText.toLowerCase();
-        
-        // Si on commence à taper, on ne garde que ce qui correspond exactement
-        if (title.includes(filter)) {
-            card.style.display = "block"; // On affiche
-        } else {
-            card.style.display = "none";  // On cache complètement !
-        }
-    });
-});
-</script>
-
-<div class="recipe-card ..."> <h2 class="recipe-title ...">{{ recette.titre }}</h2> </div>
-
-
+    </footer>
 </body>
+</html>

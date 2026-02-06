@@ -47,8 +47,8 @@ def menu_semaine(request):
     nom_jour_django = jours_mapping[numero_jour]
     date_du_jour = maintenant.strftime('%d %B %Y')
 
-    # On filtre avec le nom exact utilisé dans ta base de données
-    recettes_du_jour = Recette.objects.filter(jour_menu=nom_jour_django)
+    # CORRECTION : On utilise jour_vente (le vrai nom du champ dans ton admin)
+    recettes_du_jour = Recette.objects.filter(jour_vente=nom_jour_django)
 
     return render(request, 'cuisine/menu_semaine.html', {
         'recettes': recettes_du_jour,

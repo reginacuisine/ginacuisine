@@ -19,6 +19,13 @@ class Recette(models.Model):
     titre = models.CharField(max_length=200)
     categorie = models.CharField(max_length=50, choices=CATEGORIES)
     image = models.ImageField(upload_to='recettes/', null=True, blank=True)
+    # Champ pour les images permanentes dans static/cuisine/
+    image_statique = models.CharField(
+        max_length=255, 
+        blank=True, 
+        null=True, 
+        help_text="Exemple: cuisine/riz_gras.jpg"
+    )
     ingredients = models.TextField(blank=True)
     instructions = models.TextField(blank=True)
     jour_menu = models.CharField(max_length=20, choices=CHOIX_JOURS, default='AUCUN', verbose_name="Jour de vente")
@@ -37,7 +44,6 @@ class ContactMessage(models.Model):
 
     def __str__(self):
         return f"Message de {self.name}"
-    
 
 class Utile(models.Model):
     CATEGORIES_UTILES = [
@@ -46,25 +52,21 @@ class Utile(models.Model):
         ('sante', 'Rééquilibrage alimentaire'),
     ]
     
-    # Pour le calendrier, le titre sera la saison (ex: Hiver)
     titre = models.CharField(max_length=200, verbose_name="Titre ou Saison")
     categorie = models.CharField(max_length=50, choices=CATEGORIES_UTILES)
-    
-    # Contenu flexible pour tes listes ou descriptions
     liste_fruits = models.TextField(blank=True, help_text="Uniquement pour le calendrier")
     liste_legumes = models.TextField(blank=True, help_text="Uniquement pour le calendrier")
     description_generale = models.TextField(blank=True, help_text="Pour le matériel ou la santé")
-    
     image = models.ImageField(upload_to='utiles/', null=True, blank=True)
+    image_statique = models.CharField(max_length=255, blank=True, null=True, help_text="Exemple: cuisine/materiel.jpg")
 
     def __str__(self):
         return f"{self.get_categorie_display()} - {self.titre}"
-    
 
-# --- Aligne cette ligne tout à gauche (colonne 0) ---
 class Apropos(models.Model):
     titre = models.CharField(max_length=200, default="À propos de moi")
     image = models.ImageField(upload_to='apropos/', null=True, blank=True)
+    image_statique = models.CharField(max_length=255, blank=True, null=True, help_text="Exemple: cuisine/regina.jpg")
     description = models.TextField(help_text="Racontez votre parcours culinaire ici")
     citation = models.CharField(max_length=255, blank=True, help_text="Une petite phrase qui vous inspire")
 
