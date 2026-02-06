@@ -12,7 +12,7 @@ def home(request):
         # On cherche dans le titre de la recette (insensible à la casse)
         recettes = Recette.objects.filter(titre__icontains=query)
     else:
-        recettes = Recette.objects.all()[:6]
+        recettes = Recette.objects.all()[:15]
         
     return render(request, 'cuisine/home.html', {'recettes': recettes, 'query': query})
 
@@ -33,23 +33,26 @@ def liste_par_categorie(request, nom_categorie):
         'nom_categorie': titre_propre
     })
 
-# VERSION UNIQUE ET CORRIGÉE DU MENU
 def menu_semaine(request):
-    try:
-        locale.setlocale(locale.LC_TIME, "fr_FR.UTF-8")
-    except:
-        locale.setlocale(locale.LC_TIME, "")
-
     maintenant = datetime.now()
-    nom_jour = maintenant.strftime('%A').upper() 
+    # On récupère le numéro du jour (0 pour lundi, 4 pour vendredi)
+    numero_jour = maintenant.weekday() 
+    
+    # On crée une liste qui correspond à tes choix dans models.py
+    jours_mapping = [
+        'LUNDI', 'MARDI', 'MERCREDI', 'JEUDI', 
+        'VENDREDI', 'SAMEDI', 'DIMANCHE'
+    ]
+    
+    nom_jour_django = jours_mapping[numero_jour]
     date_du_jour = maintenant.strftime('%d %B %Y')
 
-    # Filtre les recettes selon le jour réglé dans l'admin
-    recettes_du_jour = Recette.objects.filter(jour_menu=nom_jour)
+    # On filtre avec le nom exact utilisé dans ta base de données
+    recettes_du_jour = Recette.objects.filter(jour_menu=nom_jour_django)
 
     return render(request, 'cuisine/menu_semaine.html', {
         'recettes': recettes_du_jour,
-        'nom_jour': nom_jour,
+        'nom_jour': nom_jour_django,
         'date_du_jour': date_du_jour
     })
 
