@@ -95,9 +95,3 @@ EMAIL_HOST = 'smtp.gmail.com'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# À SUPPRIMER APRÈS LE PREMIER DÉPLOIEMENT RÉUSSI
-from django.contrib.auth import get_user_model
-User = get_user_model()
-if not User.objects.filter(username='admin').exists():
-    User.objects.create_superuser('admin', 'reginatonde44@gmail.com', '79603216tonde')
-
