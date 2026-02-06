@@ -55,10 +55,12 @@ TEMPLATES = [
 WSGI_APPLICATION = 'config.wsgi.application'
 
 # --- BASE DE DONNÉES ---
-# Cette configuration détecte automatiquement ta base reginacuisine_db sur Render
+import os
+import dj_database_url
+
 DATABASES = {
     'default': dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
+        default=os.environ.get('DATABASE_URL'),
         conn_max_age=600
     )
 }
