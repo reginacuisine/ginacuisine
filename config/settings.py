@@ -54,9 +54,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-# --- BASE DE DONNÉES ---
-import os
-import dj_database_url
 
 DATABASES = {
     'default': dj_database_url.config(
