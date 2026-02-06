@@ -35,10 +35,8 @@ def liste_par_categorie(request, nom_categorie):
 
 def menu_semaine(request):
     maintenant = datetime.now()
-    # On récupère le numéro du jour (0 pour lundi, 4 pour vendredi)
     numero_jour = maintenant.weekday() 
     
-    # On crée une liste qui correspond à tes choix dans models.py
     jours_mapping = [
         'LUNDI', 'MARDI', 'MERCREDI', 'JEUDI', 
         'VENDREDI', 'SAMEDI', 'DIMANCHE'
@@ -47,8 +45,8 @@ def menu_semaine(request):
     nom_jour_django = jours_mapping[numero_jour]
     date_du_jour = maintenant.strftime('%d %B %Y')
 
-    # CORRECTION : On utilise jour_vente (le vrai nom du champ dans ton admin)
-    recettes_du_jour = Recette.objects.filter(jour_vente=nom_jour_django)
+    # ON UTILISE LE NOM QUE DJANGO RÉCLAME : jour_menu
+    recettes_du_jour = Recette.objects.filter(jour_menu=nom_jour_django)
 
     return render(request, 'cuisine/menu_semaine.html', {
         'recettes': recettes_du_jour,
