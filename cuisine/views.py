@@ -12,7 +12,7 @@ def home(request):
         # On cherche dans le titre de la recette (insensible à la casse)
         recettes = Recette.objects.filter(titre__icontains=query)
     else:
-        recettes = [] # Recette.objects.all()
+        recettes = Recette.objects.all()
         
     return render(request, 'cuisine/home.html', {'recettes': recettes, 'query': query})
 
