@@ -2,46 +2,45 @@
 {% load static %}
 
 {% block content %}
-<div class="max-w-4xl mx-auto px-6 py-16">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+<div class="max-w-5xl mx-auto px-6 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
         
-        <div class="contact-image">
+        <div class="bg-gray-50 rounded-sm overflow-hidden shadow-sm border border-gray-100">
             {% if apropos.image_statique %}
-                <img src="{% static apropos.image_statique %}" alt="Contact Gina Cuisine" class="w-full h-[500px] object-cover rounded-sm shadow-md">
+                <img src="{% static apropos.image_statique %}" alt="Gina Cuisine" class="w-full h-auto object-cover">
             {% else %}
-                <div class="w-full h-[500px] bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center italic text-gray-400">
-                    L'image s'affichera ici (remplir 'image_statique' dans l'admin)
+                <div class="w-full h-[500px] flex items-center justify-center border-2 border-dashed border-gray-200">
+                    <p class="text-gray-400 italic">L'image s'affichera ici</p>
                 </div>
             {% endif %}
         </div>
 
         <div>
-            <h1 class="font-serif italic text-5xl text-gray-800 mb-6">Laissez-moi un message</h1>
-            <p class="text-gray-500 italic mb-8">Vous voulez papoter un peu avec moi ou me poser une question ?</p>
-
-            <form action="{% url 'contact' %}" method="POST" class="space-y-6">
+            <h1 class="font-serif italic text-5xl text-gray-800 mb-8">Laissez-moi un message</h1>
+            
+            <form action="{% url 'contact' %}" method="POST" class="space-y-8">
                 {% csrf_token %}
                 
                 <div>
-                    <label class="block text-[12px] font-bold uppercase tracking-widest text-gray-900 mb-2">Votre nom complet</label>
+                    <label class="block text-[12px] font-bold uppercase tracking-widest text-gray-900 mb-3">Votre nom complet</label>
                     <input type="text" name="name" placeholder="Ex: Jean Dupont" required
-                           class="w-full px-4 py-3 border-2 border-gray-800 rounded-none focus:border-amber-600 outline-none transition-all">
+                           class="w-full px-4 py-3 border-2 border-gray-900 rounded-none focus:border-amber-600 outline-none transition-all placeholder:text-gray-300">
                 </div>
 
                 <div>
-                    <label class="block text-[12px] font-bold uppercase tracking-widest text-gray-900 mb-2">Votre adresse email</label>
+                    <label class="block text-[12px] font-bold uppercase tracking-widest text-gray-900 mb-3">Votre adresse email</label>
                     <input type="email" name="email" placeholder="exemple@mail.com" required
-                           class="w-full px-4 py-3 border-2 border-gray-800 rounded-none focus:border-amber-600 outline-none transition-all">
+                           class="w-full px-4 py-3 border-2 border-gray-900 rounded-none focus:border-amber-600 outline-none transition-all placeholder:text-gray-300">
                 </div>
 
                 <div>
-                    <label class="block text-[12px] font-bold uppercase tracking-widest text-gray-900 mb-2">Votre message</label>
+                    <label class="block text-[12px] font-bold uppercase tracking-widest text-gray-900 mb-3">Votre message</label>
                     <textarea name="message" rows="5" placeholder="Comment puis-je vous aider ?" required
-                              class="w-full px-4 py-3 border-2 border-gray-800 rounded-none focus:border-amber-600 outline-none transition-all"></textarea>
+                              class="w-full px-4 py-3 border-2 border-gray-900 rounded-none focus:border-amber-600 outline-none transition-all placeholder:text-gray-300"></textarea>
                 </div>
 
                 <button type="submit" 
-                        class="w-full bg-gray-900 text-white py-4 font-bold uppercase tracking-widest hover:bg-amber-700 transition-colors">
+                        class="w-full bg-gray-900 text-white py-4 font-bold uppercase tracking-[0.2em] text-[12px] hover:bg-amber-700 transition-colors duration-300">
                     Envoyer le message
                 </button>
             </form>
