@@ -1,122 +1,51 @@
+{% extends 'cuisine/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
-</head>
-<body class="bg-white font-sans">
-    <nav class="bg-[#f9f7f2] py-2 border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center text-[11px] uppercase tracking-[0.2em] text-gray-400">
-            <div class="hidden md:flex space-x-8">
-                <li><a href="{% url 'contact' %}" class="hover:text-amber-600 transition-colors">CONTACT</a></li>
-                <a href="{% url 'apropos' %}" class="text-gray-800">À PROPOS</a>
-            </div>
-            <div class="flex space-x-5 items-center text-[11px] uppercase tracking-widest">
-                <a href="#" class="hover:text-black italic lowercase">english</a>
-                <span class="text-gray-200">|</span>
-                <a href="#" class="hover:text-black">Shop</a>
-                <a href="#" class="hover:text-black font-bold">Login</a>
-            </div>
-        </div>
-    </nav>
 
-    <div class="text-center py-8 bg-white">
-        <h1 class="font-serif italic text-[50px] text-gray-700 tracking-tight">Mon Blog Cuisine</h1>
-    </div>
-
-    <nav class="bg-white border-y border-gray-50 relative">
-        <div class="flex justify-center items-center space-x-10 py-5">
-            <a href="{% url 'home' %}" class="text-[13px] uppercase tracking-[0.25em] text-gray-500 hover:text-black">Accueil</a>
-
-            <div class="relative group">
-                <button class="text-[13px] uppercase tracking-[0.25em] text-gray-800 font-bold flex items-center outline-none">
-                    Recettes
-                </button>
-                <div class="absolute left-0 top-full w-64 bg-white border border-gray-100 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-[100]">
-                    <ul class="flex flex-col text-[14px] text-gray-600">
-                        <li><a href="{% url 'categorie' 'salade' %}" class="block px-6 py-3 hover:bg-gray-50 border-b">Salade</a></li>
-                        <li><a href="{% url 'categorie' 'plat_burkinabe' %}" class="block px-6 py-3 hover:bg-gray-50 border-b">Plat Burkinabe</a></li>
-                        <li><a href="{% url 'categorie' 'plat_international' %}" class="block px-6 py-3 hover:bg-gray-50 border-b">Plat International</a></li>
-                        <li><a href="{% url 'categorie' 'dessert' %}" class="block px-6 py-3 hover:bg-gray-50 border-b">Dessert</a></li>
-                        <li><a href="{% url 'categorie' 'boisson' %}" class="block px-6 py-3 hover:bg-gray-50">Boisson | Cocktail</a></li>
-                    </ul>
+{% block content %}
+<div class="max-w-4xl mx-auto px-6 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        
+        <div class="contact-image">
+            {% if apropos.image_statique %}
+                <img src="{% static apropos.image_statique %}" alt="Contact Gina Cuisine" class="w-full h-[500px] object-cover rounded-sm shadow-md">
+            {% else %}
+                <div class="w-full h-[500px] bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center italic text-gray-400">
+                    L'image s'affichera ici (remplir 'image_statique' dans l'admin)
                 </div>
-            </div>
-
-            <a href="{% url 'menu_semaine' %}" class="text-[13px] uppercase tracking-[0.25em] text-gray-500 hover:text-black">Menus de la semaine</a>
-
-            <div class="relative group">
-                <a href="#" class="text-[13px] uppercase tracking-[0.25em] text-gray-800 font-bold">Utile</a>
-                <div class="absolute left-0 top-full w-72 bg-white border border-gray-100 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all z-[100]">
-                    <ul class="flex flex-col text-[12px] text-gray-600 uppercase tracking-widest">
-                        <li><a href="{% url 'utile_cat' 'calendrier' %}" class="block px-6 py-4 hover:bg-gray-50 border-b">Calendrier des fruits & Légumes de saison</a></li>
-                        <li><a href="{% url 'utile_cat' 'materiel' %}" class="block px-6 py-4 hover:bg-gray-50 border-b">Mon matériel de cuisine</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <div class="flex flex-col md:flex-row min-h-screen">
-        <div class="md:w-1/2 relative h-64 md:h-auto">
-             <img src="{% static 'cuisine/contact_portrait.jpg' %}" 
-                  alt="Mon Portrait" 
-                  class="absolute inset-0 w-full h-full object-cover">
+            {% endif %}
         </div>
 
-        <div class="md:w-1/2 p-12 md:p-24 flex flex-col justify-center">
-            <h1 class="text-6xl font-serif italic mb-10 text-gray-800">Laissez-moi un message</h1>
-            <p class="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed italic mb-12">
-                Vous voulez papoter un peu avec moi ou me poser une question ? <br>
-                Laissez-moi un message et je vous répondrai au plus vite...
-            </p>
-            
-            <form action="https://formspree.io/f/xzdapgqp" method="POST" class="space-y-6">
+        <div>
+            <h1 class="font-serif italic text-5xl text-gray-800 mb-6">Laissez-moi un message</h1>
+            <p class="text-gray-500 italic mb-8">Vous voulez papoter un peu avec moi ou me poser une question ?</p>
+
+            <form action="{% url 'contact' %}" method="POST" class="space-y-6">
+                {% csrf_token %}
+                
                 <div>
-                    <label class="block text-[11px] uppercase tracking-widest text-gray-400 mb-2">Votre Nom Complet</label>
-                    <input type="text" name="name" required placeholder="Ex: Jean Dupont" class="w-full border-b border-gray-200 py-3 focus:border-amber-500 outline-none transition-colors text-gray-700 italic bg-transparent">
+                    <label class="block text-[12px] font-bold uppercase tracking-widest text-gray-900 mb-2">Votre nom complet</label>
+                    <input type="text" name="name" placeholder="Ex: Jean Dupont" required
+                           class="w-full px-4 py-3 border-2 border-gray-800 rounded-none focus:border-amber-600 outline-none transition-all">
                 </div>
+
                 <div>
-                    <label class="block text-[11px] uppercase tracking-widest text-gray-400 mb-2">Votre Adresse Email</label>
-                    <input type="email" name="email" required placeholder="exemple@mail.com" class="w-full border-b border-gray-200 py-3 focus:border-amber-500 outline-none transition-colors text-gray-700 italic bg-transparent">
+                    <label class="block text-[12px] font-bold uppercase tracking-widest text-gray-900 mb-2">Votre adresse email</label>
+                    <input type="email" name="email" placeholder="exemple@mail.com" required
+                           class="w-full px-4 py-3 border-2 border-gray-800 rounded-none focus:border-amber-600 outline-none transition-all">
                 </div>
+
                 <div>
-                    <label class="block text-[11px] uppercase tracking-widest text-gray-400 mb-2">Votre Message</label>
-                    <textarea name="message" rows="4" required placeholder="Comment puis-je vous aider ?" class="w-full border-b border-gray-200 py-3 focus:border-amber-500 outline-none transition-colors text-gray-700 italic bg-transparent"></textarea>
+                    <label class="block text-[12px] font-bold uppercase tracking-widest text-gray-900 mb-2">Votre message</label>
+                    <textarea name="message" rows="5" placeholder="Comment puis-je vous aider ?" required
+                              class="w-full px-4 py-3 border-2 border-gray-800 rounded-none focus:border-amber-600 outline-none transition-all"></textarea>
                 </div>
-                <button type="submit" class="mt-8 bg-gray-800 text-white text-[12px] uppercase tracking-[0.2em] px-10 py-4 hover:bg-amber-600 transition-all duration-300 rounded-sm shadow-sm">
+
+                <button type="submit" 
+                        class="w-full bg-gray-900 text-white py-4 font-bold uppercase tracking-widest hover:bg-amber-700 transition-colors">
                     Envoyer le message
                 </button>
             </form>
         </div>
     </div>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <footer class="bg-[#1f2128] text-white pt-16 pb-8 mt-20">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
-                <div>
-                    <h3 class="font-serif text-xl mb-4 text-amber-500">Localisation</h3>
-                    <div class="mb-4 overflow-hidden rounded-md border-2 border-amber-500 w-full h-48">
-                        <img src="{% static 'cuisine/localisation.jpg' %}" alt="Localisation" class="w-full h-full object-cover grayscale">
-                    </div>
-                    <p class="text-sm text-gray-200 italic"><i class="fa-solid fa-location-dot mr-2 text-amber-500"></i> Ouagadougou, Burkina Faso 🇧🇫</p>
-                </div>
-                <div>
-                    <h3 class="font-serif text-xl mb-6 text-amber-500">Regina</h3>
-                    <ul class="space-y-3 text-sm text-gray-200">
-                        <li><a href="{% url 'apropos' %}" class="hover:text-amber-500"><i class="fa-solid fa-chevron-right text-[10px] mr-2"></i> À Propos de moi</a></li>
-                        <li><a href="{% url 'contact' %}" class="hover:text-amber-500"><i class="fa-solid fa-chevron-right text-[10px] mr-2"></i> Me contacter</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-serif text-xl mb-6 text-amber-500">Rechercher</h3>
-                    <input type="text" id="recipe-search-input" placeholder="Chercher un plat..." class="w-full bg-transparent border-b border-gray-600 py-2 outline-none text-white italic">
-                </div>
-            </div>
-        </div>
-    </footer>
-</body>
-</html>
+</div>
+{% endblock %}
