@@ -7,7 +7,7 @@
         
         <div class="bg-gray-50 rounded-sm overflow-hidden shadow-sm border border-gray-100">
             {% if apropos.image_statique %}
-                <img src="{% static 'cuisine/photo.jpg' %}"  alt="Gina Cuisine" class="w-full h-auto object-cover">
+                <img src="{% static apropos.image_statique %}" alt="Gina Cuisine" class="w-full h-auto object-cover">
             {% else %}
                 <div class="w-full h-[500px] flex items-center justify-center border-2 border-dashed border-gray-200">
                     <p class="text-gray-400 italic">L'image s'affichera ici</p>
