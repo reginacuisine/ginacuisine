@@ -7,27 +7,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body class="bg-white text-gray-800">
-<nav class="bg-white border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16 items-center">
-            
-            <div class="hidden md:flex space-x-8">
-                <li><a href="{% url 'contact' %}" class="hover:text-amber-600 transition-colors">CONTACT</a></li>
-                <a href="{% url 'apropos' %}" class="text-gray-800">À PROPOS</a>
+    <nav class="bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-center md:justify-end space-x-8 h-12 items-center text-[11px] font-bold tracking-widest">
+                <a href="{% url 'contact' %}" class="hover:text-amber-600 transition-colors">CONTACT</a>
+                <a href="{% url 'apropos' %}" class="text-gray-800 hover:text-amber-600 transition-colors">À PROPOS</a>
             </div>
-
         </div>
-    </div>
-</nav>
+    </nav>
 
     <div class="text-center py-12 bg-white">
-        <h1 class="font-serif italic text-[50px] text-gray-700 tracking-tight">
-            Mon Blog Cuisine
+         <h1 class="font-serif italic text-3xl md:text-[50px] text-gray-700 tracking-tight px-4"> 
+             Mon Blog Cuisine
         </h1>
     </div>
 
     <nav class="bg-white border-y border-gray-50 relative">
-        <div class="flex justify-center items-center space-x-10 py-5">
+         <div class="flex flex-wrap justify-center items-center gap-4 md:space-x-10 py-5 px-2">        
             <a href="{% url 'home' %}" class="text-[13px] uppercase tracking-[0.25em] text-gray-500 hover:text-black">Accueil</a>
 
             <div class="relative group">
