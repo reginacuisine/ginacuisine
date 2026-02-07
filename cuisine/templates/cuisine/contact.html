@@ -7,8 +7,7 @@
         
         <div class="bg-gray-50 rounded-sm overflow-hidden shadow-sm border border-gray-100">
             {% if apropos.image_statique %}
-                <img src="{% static apropos.image_statique %}" alt="Gina Cuisine" class="w-full h-auto object-cover">
-            {% else %}
+                  <img src="{% static 'cuisine/image.jpg' %}" alt="Gina Cuisine" class="w-full h-auto object-cover">            {% else %}
                 <div class="w-full h-[500px] flex items-center justify-center border-2 border-dashed border-gray-200">
                     <p class="text-gray-400 italic">L'image s'affichera ici</p>
                 </div>
@@ -17,6 +16,11 @@
 
         <div>
             <h1 class="font-serif italic text-5xl text-gray-800 mb-8">Laissez-moi un message</h1>
+
+            <p class="text-gray-500 italic text-lg">
+                Vous voulez papoter un peu avec moi ou me poser une question ? 
+                Laissez-moi un message et je vous répondrai au plus vite...
+           </p>
             
             <form action="{% url 'contact' %}" method="POST" class="space-y-8">
                 {% csrf_token %}
