@@ -77,3 +77,6 @@ def apropos_view(request):
     # On récupère le premier contenu "À propos" enregistré en admin
     contenu = Apropos.objects.first() 
     return render(request, 'cuisine/apropos.html', {'apropos': contenu})
+
+def success_view(request):
+    return render(request, 'cuisine/success.html')

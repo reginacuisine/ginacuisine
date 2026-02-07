@@ -18,6 +18,7 @@
 
            <form action="https://formspree.io/f/xzdapgqp" method="POST" class="space-y-8">  
                 {% csrf_token %}
+                <input type="hidden" name="_next" value="https://ton-site.onrender.com/success/">
                 
                 <div>
                     <label class="block text-sm font-bold uppercase tracking-widest text-gray-900 mb-3">Votre nom complet</label>

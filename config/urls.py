@@ -17,6 +17,7 @@ urlpatterns = [
     
     # Section À PROPOS : on utilise directement la fonction importée
     path('a-propos/', apropos_view, name='apropos'),
+    path('success/', views.success_view, name='success'),
 ]
 
 if settings.DEBUG:
